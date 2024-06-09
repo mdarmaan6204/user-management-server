@@ -11,7 +11,7 @@ const errorMiddleware = require("./middlewares/error-middleware");
 
 //let's tackle cors
 const corsOptions = {
-    origin: "http://localhost:5173",
+    origin: "https://user-management-client-nxok.onrender.com",
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 };
