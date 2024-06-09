@@ -10,21 +10,10 @@ const connectDb = require("./utils/db");
 const errorMiddleware = require("./middlewares/error-middleware");
 
 //let's tackle cors
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:5000",
-  "https://user-management-client-nxok.onrender.com",
-];
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-  optionSuccessStatus: 200,
+    origin: "http://localhost:5173",
+    methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
+    credentials: true,
 };
 
 app.use(cors(corsOptions));
@@ -41,10 +30,11 @@ app.use("/api/admin", adminRoute);
 
 app.use(errorMiddleware);
 
+
 const PORT = 5000;
 
 connectDb().then(() => {
-  app.listen(PORT, () => {
-    console.log(`server is running at port: ${PORT}`);
-  });
+    app.listen(PORT, () => {
+        console.log(`server is running at port: ${PORT}`);
+    });
 });
